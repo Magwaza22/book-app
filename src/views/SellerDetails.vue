@@ -15,7 +15,7 @@ export default {
       this.$router.push({ name: 'SellerFunction' });
     },
     handleSubmit() {
-      // Handle submit logic here, e.g., validation, API call etc.
+       Handle submit logic here, e.g., validation, API call etc.
       console.log(this.formData);
     },
   },

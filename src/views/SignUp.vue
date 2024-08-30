@@ -21,7 +21,7 @@ export default {
       <label for="confirmPassword">Confirm Password:</label>
       <input type="password" v-model="confirmPassword" id="confirmPassword" required />
 
-      <button type="submit">Sign Up</button>
+      <button @click="navigateTosubmit('SellABook')">Sign Up</button>
     </form>
   </div>
 </template>
