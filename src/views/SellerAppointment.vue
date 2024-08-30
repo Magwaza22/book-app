@@ -1,22 +1,30 @@
 <template>
-  <div>
+  <div class="container">
     <h1>BookJunction Appointments</h1>
 
     <!-- Appointment Form for Delivery -->
     <div class="appointment-form">
       <h2>Appointment to Deliver Book</h2>
-      <form @submit.prevent="bookAppointment">
+      <form @submit.prevent="bookAppointment" class="form">
         <input type="hidden" v-model="form.bookID" value="12345">
         <input type="hidden" v-model="form.userID" value="67890">
-        <label for="description">Description:</label>
-        <textarea id="description" v-model="form.description"></textarea><br>
-        <label for="date">Date:</label>
-        <input type="date" id="date" v-model="form.date"><br>
-        <label for="time">Time:</label>
-        <input type="time" id="time" v-model="form.time"><br>
-        <label for="location">Location:</label>
-        <input type="text" id="location" v-model="form.location" value="Library Room A"><br>
-        <button type="submit">Book Appointment</button>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" v-model="form.description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" id="date" v-model="form.date">
+        </div>
+        <div class="form-group">
+          <label for="time">Time:</label>
+          <input type="time" id="time" v-model="form.time">
+        </div>
+        <div class="form-group">
+          <label>Location:</label>
+          <p>{{ form.location }}</p> <!-- Display static address -->
+        </div>
+        <button type="submit" class="submit-btn">Book Appointment</button>
       </form>
     </div>
 
@@ -40,7 +48,7 @@ export default {
         description: '',
         date: '',
         time: '',
-        location: 'Library Room A'
+        location: 'Hanover St, District Six, Cape Town, 7925, Library' // Live static address
       },
       showPopup: false,
       popupMessage: ''
@@ -60,7 +68,70 @@ export default {
 </script>
 
 <style scoped>
-/* Add your CSS styles here */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.appointment-form {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #a69e9e; /* Border color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
+  background-color: #ffffff; /* Background color */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+textarea,
+input[type="date"],
+input[type="time"] {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #a69e9e;
+  border-radius: 4px;
+}
+
+p {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.submit-btn {
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #966a6a;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #b7b7a4;
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -72,13 +143,17 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .popup-content {
-  background: white;
+  background: #ffffff;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 8px; /* Rounded corners */
   text-align: center;
   position: relative;
+  border: 1px solid #a69e9e; /* Border color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
 }
+
 .close-btn {
   position: absolute;
   top: 10px;
