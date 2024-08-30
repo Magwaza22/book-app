@@ -10,6 +10,11 @@ import SellerFunction from "@/views/SellerFunction.vue";
 import AddBook from "@/views/AddBook.vue";
 import SellerAppointment from "@/views/SellerAppointment.vue";
 import BuyBook from '../views/BuyBook.vue';
+import BuyerLogin from "@/views/BuyerLogin.vue";
+import BuyerRegister from "@/views/BuyerRegister.vue";
+import BookListings from "@/views/BookListings.vue";
+import Orders from "@/views/Orders.vue";
+
 
 const routes = [
     { path: '/', name: 'Home', component: HomePage },
@@ -23,6 +28,10 @@ const routes = [
     { path: '/add-book', name: 'AddBook', component: AddBook},
     { path: '/seller-appointment', name: 'SellerAppointment',component: SellerAppointment},
     { path: '/buy', name: 'BuyBook', component: BuyBook },
+    { path: '/login', name: 'BuyerLogin', component: BuyerLogin},
+    { path: '/register', name: 'BuyerRegister', component: BuyerRegister},
+    { path: '/bookl-isting', name: 'BookListings', component: BookListings},
+    { path: '/order', name: 'Orders', component:Orders},
 
 ];
 

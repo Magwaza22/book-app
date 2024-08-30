@@ -38,7 +38,7 @@ export default {
     handleSignUp() {
       // Implement signup logic here, e.g., validation and API call
       if (this.password === this.confirmPassword) {
-        this.$router.push({ name: 'SellerFunction' });
+        this.$router.push({ name: 'SellerDetails' });
       } else {
         alert('Passwords do not match.');
       }
