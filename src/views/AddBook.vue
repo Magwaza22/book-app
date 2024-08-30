@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <!-- Add BackButton component at the top -->
+    <BackButton />
+
     <h1>Enter Book Details</h1>
     <form @submit.prevent="handleSubmit">
       <label for="bookId">Book ID (Generated)</label>
@@ -29,7 +32,12 @@
 </template>
 
 <script>
+import BackButton from '@/components/BackButton.vue'; // Import BackButton
+
 export default {
+  components: {
+    BackButton // Register BackButton as a component
+  },
   data() {
     return {
       bookDetails: {
@@ -60,6 +68,7 @@ export default {
 </script>
 
 <style scoped>
+/* Your existing styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #F0EFEB; /* Background color */
