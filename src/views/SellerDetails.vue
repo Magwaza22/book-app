@@ -14,10 +14,7 @@ export default {
     handleLogin() {
       this.$router.push({ name: 'SellerFunction' });
     },
-    handleSubmit() {
-       Handle submit logic here, e.g., validation, API call etc.
-      console.log(this.formData);
-    },
+
   },
 };
 </script>
@@ -39,7 +36,7 @@ export default {
         <label for="cellphone">Cellphone Number:</label>
         <input type="tel" id="cellphone" v-model="formData.cellphone" required>
 
-        <input type="submit" value="Submit">
+        <button @click="navigatorTo('SellerFunction')">"Submit"></button>>
       </form>
     </div>
   </div>
