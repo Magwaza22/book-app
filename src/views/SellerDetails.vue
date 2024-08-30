@@ -11,7 +11,7 @@ export default {
     };
   },
   methods: {
-    handleLogin() {
+    handleSubmit() {
       this.$router.push({ name: 'SellerFunction' });
     },
 
@@ -36,7 +36,7 @@ export default {
         <label for="cellphone">Cellphone Number:</label>
         <input type="tel" id="cellphone" v-model="formData.cellphone" required>
 
-        <button @click="navigatorTo('SellerFunction')">"Submit"></button>>
+        <button type="submit">"Submit"></button>>
       </form>
     </div>
   </div>

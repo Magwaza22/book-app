@@ -1,7 +1,7 @@
 <script >
 export default {
   methods: {
-    handleLogin() {
+    signUp() {
       this.$router.push({ name: 'SellerDetails' });
     },
   },
@@ -21,7 +21,7 @@ export default {
       <label for="confirmPassword">Confirm Password:</label>
       <input type="password" v-model="confirmPassword" id="confirmPassword" required />
 
-      <button @click="navigateTosubmit('SellerDetails')">Sign Up</button>
+      <button type="submit" >Sign Up</button>
     </form>
   </div>
 </template>
