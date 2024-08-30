@@ -1,79 +1,133 @@
-<script >
+<template>
+  <div id="sign-up" class="container">
+    <main>
+      <section class="hero">
+        <h1>SIGN UP FOR AN ACCOUNT</h1>
+        <p>Fill in the form below to create your account and start managing your listings.</p>
+        <form @submit.prevent="handleSignUp" class="signup-form">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" v-model="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" v-model="password" id="password" required />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" v-model="confirmPassword" id="confirmPassword" required />
+          </div>
+          <button type="submit">Sign Up</button>
+        </form>
+      </section>
+    </main>
+  </div>
+</template>
+
+<script>
+
 export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      confirmPassword: '',
+    };
+  },
   methods: {
-    handleLogin() {
-      this.$router.push({ name: 'SellerDetails' });
+    handleSignUp() {
+      // Implement signup logic here, e.g., validation and API call
+      if (this.password === this.confirmPassword) {
+        this.$router.push({ name: 'SellerFunction' });
+      } else {
+        alert('Passwords do not match.');
+      }
     },
   },
 };
 </script>
 
-<template>
-  <div>
-    <h1>Sign Up</h1>
-    <form @submit.prevent="handleLogin">
-      <label for="email">Email:</label>
-      <input type="email" v-model="email" id="email" required />
-
-      <label for="password">Password:</label>
-      <input type="password" v-model="password" id="password" required />
-
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" v-model="confirmPassword" id="confirmPassword" required />
-
-      <button type="submit">Sign Up</button>
-    </form>
-  </div>
-</template>
-
 <style scoped>
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+
+/* CSS variables */
+:root {
+  --primary-color: #8c7851;
+  --secondary-color: #d4c6a9;
+  --text-color: #333;
+  --background-color: #f8f4ef;
+  --light-gray: #f0f0f0;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+/* General styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #F0EFEB; /* Background color */
-  color: #283618; /* Primary text color */
   margin: 0;
-  padding: 0;
+  font-family: var(--font-body);
+  color: var(--text-color);
+  background-color: var(--light-gray);
 }
-.container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #B7B7A4; /* Form background color */
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-h1 {
+
+/* Main content styles */
+.hero {
+  padding: 4rem 2rem;
   text-align: center;
-  color: #283618;
-  margin-bottom: 20px;
+  background-color: var(--background-color); /* Added background color for better contrast */
+  border-radius: 8px; /* Optional: adds rounded corners */
 }
-label {
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px; /* Ensures the form doesn't stretch too wide */
+}
+
+.form-group label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #283618;
+  margin-bottom: 0.5rem;
 }
-input[type="text"],
-input[type="number"] {
+
+.form-group input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #D4D4D4;
+  padding: 0.8rem;
+  border: 1px solid var(--secondary-color);
   border-radius: 4px;
-  background-color: #F0EFEB;
+  font-size: 1rem;
+  background-color: var(--background-color); /* Consistent with the page background */
 }
+
 button {
-  width: 100%;
-  padding: 12px;
-  background-color: #283618; /* Button background */
-  color: #F0EFEB; /* Button text color */
+  background-color: var(--secondary-color);
   border: none;
+  color: var(--text-color);
+  padding: 0.8rem 1.5rem;
+  text-align: center;
+  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
 }
+
 button:hover {
-  background-color: #D4D4D4; /* Button hover color */
-  color: #283618;
+  background-color: var(--primary-color);
+  color: var(--background-color);
 }
 </style>
