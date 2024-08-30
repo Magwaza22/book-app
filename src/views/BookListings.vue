@@ -6,12 +6,11 @@
         <h2>{{ category }}</h2>
         <div class="book-list">
           <div v-for="book in books" :key="book.bookId" class="book-item">
-            <img :src="require(`@/assets/${bookimageUrl}`)" :alt="book.title" class="book-image" />
+            <img :src="book.imageUrl" :alt="book.title" class="book-image" />
             <h3>{{ book.title }}</h3>
             <p><strong>Author:</strong> {{ book.author }}</p>
             <p><strong>Edition:</strong> {{ book.edition }}</p>
             <p><strong>Price:</strong> ${{ book.price }}</p>
-
             <label>
               <input type="checkbox" v-model="selectedBooks" :value="book.bookId" />
               Select this book
@@ -19,7 +18,7 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="submit-button">Go to Order Page</button>
+      <button type="submit" class="submit-button">Go to Orders Page</button>
     </form>
   </div>
 </template>
@@ -36,7 +35,7 @@ export default {
           author: 'Douglas Rockford',
           edition: '1st',
           price: 25.99,
-          imageUrl: 'CJava.jpg'
+          imageUrl: '../assets/CJava.jpg'
         },
         {
           bookId: '2',
@@ -45,7 +44,7 @@ export default {
           author: 'Robert C. Martin',
           edition: '1st',
           price: 32.99,
-          imageUrl: 'python.jpg'
+          imageUrl: '../assets/python.jpg'
         },
         {
           bookId: '3',
@@ -54,7 +53,7 @@ export default {
           author: 'Kyle Simpson',
           edition: '1st',
           price: 22.99,
-          imageUrl: 'java.jpg'
+          imageUrl: '../assets/java.jpg'
         },
         {
           bookId: '4',
@@ -63,7 +62,7 @@ export default {
           author: 'Andrew Hunt, David Thomas',
           edition: '2nd',
           price: 45.99,
-          imageUrl: 'pragmatic_programmer.jpg'
+          imageUrl: '../assets/pragmatic_programmer.jpg'
         },
         {
           bookId: '5',
@@ -72,9 +71,9 @@ export default {
           author: 'Jonah Berger',
           edition: '1st',
           price: 18.99,
-          imageUrl: 'markerting.jpg'
+          imageUrl: '../assets/markerting.jpg'
         }
-        // Additional books if needed
+        // More books can be added here
       ],
       selectedBooks: []
     };
@@ -92,9 +91,11 @@ export default {
   },
   methods: {
     submitForm() {
-      // Implement the logic to navigate to the order page
-      // Assuming you have Vue Router set up:
-      this.$router.push({ name: 'Order', query: { books: this.selectedBooks.join(',') } });
+      // Navigate to the Orders page with selected books as query parameters
+      this.$router.push({
+        name: 'Orders', // Ensure this matches the route name in your router
+        query: {books: this.selectedBooks.join(',')}
+      });
     }
   }
 };
@@ -105,59 +106,63 @@ export default {
   max-width: 1200px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #d4c6a9;
+  background-color: #f5f5f5;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center align the content */
 }
+
 h1 {
   text-align: center;
   color: #333;
   margin-bottom: 30px;
 }
+
 .category-section {
   margin-bottom: 40px;
-  width: 100%; /* Ensure category sections take full width */
 }
+
 h2 {
   color: #444;
   margin-bottom: 20px;
 }
+
 .book-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center align book items */
   gap: 20px;
 }
+
 .book-item {
   background-color: #fff;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 200px;
   text-align: center;
 }
+
 .book-image {
   max-width: 100%;
   border-radius: 4px;
   margin-bottom: 15px;
 }
+
 label {
   display: block;
   margin-top: 10px;
 }
+
 .submit-button {
   margin-top: 20px;
   padding: 10px 20px;
   background-color: #8c7851;
-  color: black;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
+
 .submit-button:hover {
-  background-color: #444444;
+  background-color: #755d3f;
 }
 </style>

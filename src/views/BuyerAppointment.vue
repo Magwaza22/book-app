@@ -59,6 +59,7 @@ export default {
       // Logic for booking the appointment
       this.popupMessage = 'Collection appointment booked successfully!';
       this.showPopup = true;
+      this.$router.push({ name: 'Ratings' });
     },
     closePopup() {
       this.showPopup = false;

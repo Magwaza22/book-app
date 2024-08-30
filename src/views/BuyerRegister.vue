@@ -1,162 +1,133 @@
 <template>
-  <div class="registration-container">
-    <h1>Register as a Buyer</h1>
-    <form @submit.prevent="registerBuyer">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" v-model="buyer.name" required />
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" v-model="buyer.email" required />
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="buyer.password" required />
-      </div>
-      <div class="form-group">
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" v-model="buyer.phoneNumber" required />
-      </div>
-      <button type="submit">Register</button>
-    </form>
-    <p v-if="message">{{ message }}</p>
+  <div id="sign-up" class="container">
+    <main>
+      <section class="hero">
+        <h1>SIGN UP FOR AN ACCOUNT</h1>
+        <p>Fill in the form below to create your account and start Buying!!.</p>
+        <form @submit.prevent="handleSignUp" class="signup-form">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" v-model="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" v-model="password" id="password" required />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" v-model="confirmPassword" id="confirmPassword" required />
+          </div>
+          <button type="submit">Sign Up</button>
+        </form>
+      </section>
+    </main>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import { ref } from 'vue';
 
 export default {
-  name: 'BuyerRegistration',
-  setup() {
-    // Reactive state for buyer details
-    const buyer = ref({
-      name: '',
+  data() {
+    return {
       email: '',
       password: '',
-      phoneNumber: ''
-    });
-
-    const message = ref('');
-
-    // Function to register a new buyer
-    const registerBuyer = async () => {
-      try {
-        const response = await axios.post('/buyer', buyer.value);
-        if (response.status === 201) {
-          message.value = 'Registration successful!';
-          // Reset buyer details after successful registration
-          buyer.value = {
-            name: '',
-            email: '',
-            password: '',
-            phoneNumber: ''
-          };
-        }
-      } catch (error) {
-        message.value = 'Registration failed. Please try again.';
-        console.error(error);
-      }
+      confirmPassword: '',
     };
-
-    return { buyer, message, registerBuyer };
-  }
+  },
+  methods: {
+    handleSignUp() {
+      // Implement signup logic here, e.g., validation and API call
+      if (this.password === this.confirmPassword) {
+        this.$router.push({ name: 'BookListings' });
+      } else {
+        alert('Passwords do not match.');
+      }
+    },
+  },
 };
 </script>
+
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+
+/* CSS variables */
+:root {
+  --primary-color: #8c7851;
+  --secondary-color: #d4c6a9;
+  --text-color: #333;
+  --background-color: #f8f4ef;
+  --light-gray: #f0f0f0;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Roboto', sans-serif;
 }
 
-.appointment-form {
-  width: 100%;
-  max-width: 400px;
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #a69e9e; /* Border color */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
-  background-color: #ffffff; /* Background color */
+/* General styles */
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-color);
+  background-color: var(--light-gray);
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
+/* Main content styles */
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: var(--background-color); /* Added background color for better contrast */
+  border-radius: 8px; /* Optional: adds rounded corners */
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="tel"] {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #a69e9e;
-  border-radius: 4px;
-  margin-bottom: 10px; /* Spacing between input and label */
+h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 p {
-  margin: 0;
-  padding: 10px 0;
-  font-size: 14px;
-  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-.submit-btn {
-  padding: 10px;
-  font-size: 16px;
-  color: white;
-  background-color: #966a6a;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.submit-btn:hover {
-  background-color: #b7b7a4;
-}
-
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+.signup-form {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
-.popup-content {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px; /* Rounded corners */
-  text-align: center;
-  position: relative;
-  border: 1px solid #a69e9e; /* Border color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px; /* Ensures the form doesn't stretch too wide */
 }
 
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--background-color); /* Consistent with the page background */
+}
+
+button {
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--text-color);
+  padding: 0.8rem 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 4px;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
 }
 </style>
