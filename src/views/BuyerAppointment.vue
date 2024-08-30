@@ -1,41 +1,5 @@
 <template>
-  <div class="container">
-    <h1>BookJunction Appointments</h1>
 
-    <!-- Appointment Form for Collection -->
-    <div class="appointment-form">
-      <h2>Appointment to Collect Book</h2>
-      <form @submit.prevent="bookAppointment">
-        <input type="hidden" v-model="form.orderID" value="54321">
-        <input type="hidden" v-model="form.buyerID" value="09876">
-        <div class="form-group">
-          <label for="buyername">Buyer Name:</label>
-          <input type="text" id="buyername" v-model="form.buyername">
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" v-model="form.email">
-        </div>
-        <div class="form-group">
-          <label for="phonenumber">Phone Number:</label>
-          <input type="tel" id="phonenumber" v-model="form.phonenumber">
-        </div>
-        <div class="form-group">
-          <label>Location:</label>
-          <p>{{ form.location }}</p> <!-- Display static address -->
-        </div>
-        <button type="submit" class="submit-btn">Book Appointment</button>
-      </form>
-    </div>
-
-    <!-- Pop-up Modal -->
-    <div v-if="showPopup" class="popup">
-      <div class="popup-content">
-        <span class="close-btn" @click="closePopup">&times;</span>
-        <p>{{ popupMessage }}</p>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>

@@ -1,5 +1,6 @@
 <template>
   <header>
+    <a href="#" class="back-arrow" @click.prevent="goBack">&larr; Back</a>
     <div class="logo">
       <img src="../assets/logo.jpg" alt="Book Junction Logo" />
       Book Junction
@@ -17,11 +18,16 @@
 <script>
 export default {
   name: 'Header',
+  methods: {
+    goBack() {
+      window.history.back();
+    }
+  }
 };
 </script>
 
 <style scoped>
-/* Font imports */
+  /* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
 /* CSS variables */
@@ -72,5 +78,14 @@ nav a {
   text-decoration: none;
   color: var(--background-color);
   font-weight: 500;
+
+  .back-arrow {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    margin-right: 15px;
+    cursor: pointer;
+  }
 }
+
 </style>

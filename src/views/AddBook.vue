@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <!-- Add BackButton component at the top -->
-    <BackButton />
-
     <h1>Enter Book Details</h1>
     <form @submit.prevent="handleSubmit">
       <label for="bookId">Book ID (Generated)</label>
@@ -32,12 +29,7 @@
 </template>
 
 <script>
-import BackButton from '@/components/BackButton.vue'; // Import BackButton
-
 export default {
-  components: {
-    BackButton // Register BackButton as a component
-  },
   data() {
     return {
       bookDetails: {
@@ -57,7 +49,7 @@ export default {
       console.log('Book details saved:', this.bookDetails);
     },
     navigateTo(pageName) {
-      this.$router.push({ name: pageName });
+      this.$router.push({name: pageName});
     },
     handleSubmit() {
       this.saveBook(); // Call the saveBook method to save the details
@@ -68,7 +60,6 @@ export default {
 </script>
 
 <style scoped>
-/* Your existing styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #F0EFEB; /* Background color */
@@ -76,6 +67,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .container {
   max-width: 600px;
   margin: 50px auto;
@@ -84,17 +76,20 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 h1 {
   text-align: center;
   color: #283618;
   margin-bottom: 20px;
 }
+
 label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
   color: #283618;
 }
+
 input[type="text"],
 input[type="number"] {
   width: 100%;
@@ -104,6 +99,7 @@ input[type="number"] {
   border-radius: 4px;
   background-color: #F0EFEB;
 }
+
 button {
   width: 100%;
   padding: 12px;
@@ -114,6 +110,7 @@ button {
   cursor: pointer;
   font-size: 16px;
 }
+
 button:hover {
   background-color: #D4D4D4; /* Button hover color */
   color: #283618;

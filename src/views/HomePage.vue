@@ -11,6 +11,7 @@
         <div class="buttons">
           <button @click="navigateTo('SellABook')">Sell a Book</button>
           <button @click="navigateTo('BuyBook')">Buy a Book</button>
+          <button @click="navigateTo('ManageBooks')">Manage Books</button>
         </div>
       </section>
     </main>
@@ -28,6 +29,7 @@ export default {
 </script>
 
 <style scoped>
+
 /* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
@@ -84,5 +86,4 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-
 </style>

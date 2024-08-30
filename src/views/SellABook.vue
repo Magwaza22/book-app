@@ -1,29 +1,19 @@
 <template>
   <div id="sell-a-book">
-    <!-- Add BackButton component at the top -->
-    <BackButton />
     <h1>Sell a Book</h1>
     <p>Here you can list a book to sell.</p>
-    <div class="buttons">
-      <button @click="navigateTo('SignIn')">Login</button>
-      <button @click="navigateTo('SignUp')">Register</button>
-    </div>
   </div>
 </template>
 
-<script>
-import BackButton from "@/components/BackButton.vue";
 
+
+<script>
 export default {
   name: 'SellABook',
-  components: {BackButton},
-  methods: {
-    navigateTo(page) {
-      this.$router.push({ name: page });
-    },
-  },
 };
 </script>
+
+
 
 <style scoped>
 /* Font imports */
@@ -46,28 +36,19 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
 }
-
-/* Sell a Book page specific styles */
-#sell-a-book {
-  display: flex;
-  flex-direction: column;
-  align-items: center;  /* Center elements horizontally */
-  justify-content: center; /* Center elements vertically */
-  min-height: 100vh; /* Full viewport height */
-  padding: 2rem;
+/* Homepage specific styles */
+/* Main content styles */
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
-#sell-a-book h1 {
+.hero h1 {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-#sell-a-book p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  text-align: center; /* Center text */
-}
 
 .buttons {
   display: flex;

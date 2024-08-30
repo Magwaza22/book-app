@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <!-- Add BackButton component at the top -->
-    <BackButton />
     <h1>Book Listing</h1>
     <div v-for="(books, category) in categorizedBooks" :key="category" class="category-section">
       <h2>{{ category }}</h2>
@@ -23,10 +21,9 @@
 </template>
 
 <script>
-import BackButton from "@/components/BackButton.vue";
 
 export default {
-  components: {BackButton},
+
   data() {
     return {
       books: [

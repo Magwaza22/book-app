@@ -32,8 +32,7 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
 }
-
-/* Manage Books page specific styles */
+/* Homepage specific styles */
 /* Main content styles */
 .hero {
   padding: 4rem 2rem;
@@ -46,10 +45,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.slogan {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
+
 
 .buttons {
   display: flex;
@@ -69,5 +65,4 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-
 </style>

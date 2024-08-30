@@ -1,24 +1,18 @@
 <template>
   <div id="buy-a-book">
     <h1>Buy a Book</h1>
-    <p>Here you can list a book to sell.</p>
-    <div class="buttons">
-      <button @click="navigateTo('SignIn')">Login</button>
-      <button @click="navigateTo('SignUp')">Register</button>
-    </div>
+    <p>Here you can browse and buy books.</p>
   </div>
 </template>
 
+
 <script>
 export default {
-  name: 'BuyABook',
-  methods: {
-    navigateTo(page) {
-      this.$router.push({ name: page });
-    },
-  },
+  name: 'BuyBook',
 };
 </script>
+
+
 
 <style scoped>
 /* Font imports */
@@ -41,27 +35,22 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
 }
-
-/* Buy a Book page specific styles */
-#buy-a-book {
-  display: flex;
-  flex-direction: column;
-  align-items: center;  /* Center elements horizontally */
-  justify-content: center; /* Center elements vertically */
-  min-height: 100vh; /* Full viewport height */
-  padding: 2rem;
+/* Homepage specific styles */
+/* Main content styles */
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
-#buy-a-book h1 {
+.hero h1 {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-#buy-a-book p {
+.slogan {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  text-align: center; /* Center text */
 }
 
 .buttons {

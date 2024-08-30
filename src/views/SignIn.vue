@@ -1,8 +1,6 @@
 <template>
   <div id="sign-in-container">
     <div id="sign-in">
-      <!-- Add BackButton component at the top -->
-      <BackButton />
       <h1>Sign In</h1>
       <form @submit.prevent="handleLogin">
         <div class="form-group">
@@ -20,10 +18,8 @@
 </template>
 
 <script>
-import BackButton from "@/components/BackButton.vue";
 
 export default {
-  components: {BackButton},
   data() {
     return {
       email: '',
