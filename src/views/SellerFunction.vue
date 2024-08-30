@@ -10,7 +10,6 @@
         </p>
         <div class="buttons">
           <button @click="navigateTo('AddListing')">Add Listing</button>
-          <button @click="navigateTo('ManageListings')">Manage Listings</button>
           <button @click="navigateTo('UpdateDetails')">Update Details</button>
           <button @click="navigateTo('ViewReviews')">View Reviews</button>
         </div>
@@ -61,7 +60,7 @@ body {
 .book-icon {
   width: 60px;
   height: 80px;
-  background-image: url('../assets/logo.jpg');
+  background-image: url('../assets/stack.jpg'); /* Replace with your book image */
   background-size: cover;
   margin: 0 auto 1rem;
 }
