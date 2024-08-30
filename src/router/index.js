@@ -33,7 +33,7 @@ const routes = [
     { path: '/buy', name: 'BuyBook', component: BuyBook },
     { path: '/login', name: 'BuyerLogin', component: BuyerLogin},
     { path: '/register', name: 'BuyerRegister', component: BuyerRegister},
-    { path: '/bookl-isting', name: 'BookListings', component: BookListings},
+    { path: '/book-listing', name: 'BookListings', component: BookListings},
     { path: '/order', name: 'Orders', component:Orders},
     { path: '/buyer-appointment', name: 'BuyerAppointment', component:BuyerAppointment},
     { path: '/ratings', name: 'Ratings', component:Ratings},

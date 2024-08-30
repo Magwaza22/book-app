@@ -1,29 +1,31 @@
 <template>
   <div class="container">
     <h1>Book Listing</h1>
-    <div v-for="(books, category) in categorizedBooks" :key="category" class="category-section">
-      <h2>{{ category }}</h2>
-      <div class="book-list">
-        <div v-for="book in books" :key="book.bookId" class="book-item">
-          <img :src="require(`@/assets/${book.imageUrl}`)" :alt="book.title" class="book-image" />
-          <h3>{{ book.title }}</h3>
-          <p><strong>Author:</strong> {{ book.author }}</p>
-          <p><strong>Edition:</strong> {{ book.edition }}</p>
-          <p><strong>Price:</strong> ${{ book.price }}</p>
-          <label>
-            <input type="checkbox" v-model="selectedBooks" :value="book.bookId" />
-            Select this book
-          </label>
+    <form @submit.prevent="submitForm">
+      <div v-for="(books, category) in categorizedBooks" :key="category" class="category-section">
+        <h2>{{ category }}</h2>
+        <div class="book-list">
+          <div v-for="book in books" :key="book.bookId" class="book-item">
+            <img :src="require(`@/assets/${bookimageUrl}`)" :alt="book.title" class="book-image" />
+            <h3>{{ book.title }}</h3>
+            <p><strong>Author:</strong> {{ book.author }}</p>
+            <p><strong>Edition:</strong> {{ book.edition }}</p>
+            <p><strong>Price:</strong> ${{ book.price }}</p>
+
+            <label>
+              <input type="checkbox" v-model="selectedBooks" :value="book.bookId" />
+              Select this book
+            </label>
+          </div>
         </div>
       </div>
-    </div>
+      <button type="submit" class="submit-button">Go to Order Page</button>
+    </form>
   </div>
 </template>
 
 <script>
-
 export default {
-
   data() {
     return {
       books: [
@@ -87,6 +89,13 @@ export default {
         return acc;
       }, {});
     }
+  },
+  methods: {
+    submitForm() {
+      // Implement the logic to navigate to the order page
+      // Assuming you have Vue Router set up:
+      this.$router.push({ name: 'Order', query: { books: this.selectedBooks.join(',') } });
+    }
   }
 };
 </script>
@@ -96,7 +105,7 @@ export default {
   max-width: 1200px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #f5f5f5;
+  background-color: #d4c6a9;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -126,7 +135,7 @@ h2 {
   background-color: #fff;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034);
   width: 200px;
   text-align: center;
 }
@@ -138,5 +147,17 @@ h2 {
 label {
   display: block;
   margin-top: 10px;
+}
+.submit-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #8c7851;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submit-button:hover {
+  background-color: #444444;
 }
 </style>
