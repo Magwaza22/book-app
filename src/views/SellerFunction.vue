@@ -3,8 +3,6 @@
     <main>
       <section class="hero">
         <div class="book-icon"></div>
-        <!-- Add BackButton component at the top -->
-        <BackButton />
         <h1>WELCOME TO THE SELLER'S HUB</h1>
         <div class="slogan">Empowering sellers, enriching students!</div>
         <p>
@@ -21,10 +19,9 @@
 </template>
 
 <script>
-import BackButton from "@/components/BackButton.vue";
 
 export default {
-  components: {BackButton},
+
   methods: {
     navigateTo(page) {
       this.$router.push({ name: page });

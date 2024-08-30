@@ -11,7 +11,6 @@
         <div class="buttons">
           <button @click="navigateTo('SellABook')">Sell a Book</button>
           <button @click="navigateTo('BuyBook')">Buy a Book</button>
-          <button @click="navigateTo('ManageBooks')">Manage Books</button>
         </div>
       </section>
     </main>

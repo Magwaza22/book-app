@@ -20,9 +20,10 @@ export default {
 </script>
 
 <template>
-  <div class="Buyer-details">
-    <h1>Seller Details</h1>
-    <div class="form-box">
+  <div id="seller-details" class="container">
+    <main>
+      <div class="form-box">
+
       <form @submit.prevent="handleSubmit">
         <label for="userid">User ID:</label>
         <input type="text" id="userid" v-model="formData.userid" required>
@@ -35,14 +36,16 @@ export default {
 
         <label for="cellphone">Cellphone Number:</label>
         <input type="tel" id="cellphone" v-model="formData.cellphone" required>
-
-        <button @click="navigatorTo('SellerFunction')">"Submit"></button>>
+        <button type="submit">"Submit"</button>
       </form>
-    </div>
+
+      </div>
+    </main>
   </div>
 </template>
 
 <style>
+
 /* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
@@ -66,18 +69,6 @@ body {
 }
 
 /* Main content styles */
-.hero {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.book-icon {
-  width: 60px;
-  height: 80px;
-  background-image: url('../assets/stack.jpg'); /* Replace with your book image */
-  background-size: cover;
-  margin: 0 auto 1rem;
-}
 
 .hero h1 {
   font-family: var(--font-heading);
@@ -85,10 +76,14 @@ body {
   margin-bottom: 1rem;
 }
 
-.slogan {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  animation: fadeIn 5s infinite alternate;
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+  border: 3px solid #D4D4D4;
+  border-radius: 4px;
+  background-color: #F0EFEB;
 }
 
 @keyframes fadeIn {
@@ -115,4 +110,3 @@ body {
   cursor: pointer;
 }
 </style>
-

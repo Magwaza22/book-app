@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     handleLogin() {
-      this.$router.push({ name: 'AddBook' });
+      this.$router.push({ name: 'SellerFunction' });
     },
   },
 };
