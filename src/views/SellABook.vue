@@ -2,21 +2,22 @@
   <div id="sell-a-book">
     <h1>Sell a Book</h1>
     <p>Here you can list a book to sell.</p>
-    <button @click="navigateTo('SignIn')">Login</button>
-    <button @click="navigateTo('SignUp')">Register</button>
+    <div class="buttons">
+      <button @click="navigateTo('SignIn')">Login</button>
+      <button @click="navigateTo('SignUp')">Register</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'SellABook',
-  methods:{
-      navigateTo(page){
-        this.$router.push({ name: page});
-      },
+  methods: {
+    navigateTo(page) {
+      this.$router.push({ name: page });
     },
-  };
-
+  },
+};
 </script>
 
 <style scoped>
@@ -40,22 +41,27 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
 }
+
 /* Sell a Book page specific styles */
-/* Main content styles */
-.hero {
-  padding: 4rem 2rem;
-  text-align: center;
+#sell-a-book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Center elements horizontally */
+  justify-content: center; /* Center elements vertically */
+  min-height: 100vh; /* Full viewport height */
+  padding: 2rem;
 }
 
-.hero h1 {
+#sell-a-book h1 {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-.slogan {
+#sell-a-book p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  text-align: center; /* Center text */
 }
 
 .buttons {
@@ -76,5 +82,4 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-
 </style>
