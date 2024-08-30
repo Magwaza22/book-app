@@ -1,72 +1,127 @@
 <template>
-  <div id="contact">
+  <div class="contact-page">
     <h1>Contact Us</h1>
-    <p>Feel free to reach out to us at contact@bookjunction.com</p>
+
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:bookjunction@gmail.com">bookjunction@gmail.com</a></p>
+      <p><strong>Phone:</strong> +123-456-7890</p>
+      <p><strong>Address:</strong> 123 Bookstore Lane, CapeTown, South Africa</p>
+    </div>
+
+    <h2>Connect with us on Social Media</h2>
+    <div class="social-icons">
+      <a :href="facebookLink" target="_blank" aria-label="Facebook">
+        <img src="@/assets/Facebook.png" alt="Facebook" class="icon-image" />
+      </a>
+      <a :href="twitterLink" target="_blank" aria-label="Twitter">
+        <img src="@/assets/x.png" alt="Twitter" class="icon-image" />
+      </a>
+      <a :href="instagramLink" target="_blank" aria-label="Instagram">
+        <img src="@/assets/insta.jpg" alt="Instagram" class="icon-image" />
+      </a>
+    </div>
+
+    <h2>Send Us a Message</h2>
+    <form @submit.prevent="submitForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" v-model="form.name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="form.email" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" v-model="form.message" required></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ContactPage',
+  data() {
+    return {
+      facebookLink: "https://www.facebook.com/yourpage",
+      twitterLink: "https://www.twitter.com/yourpage",
+      instagramLink: "https://www.instagram.com/yourpage",
+      form: {
+        name: '',
+        email: '',
+        message: ''
+      }
+    };
+  },
+  methods: {
+    submitForm() {
+      // Handle form submission, e.g., send data to a server
+      alert(`Thank you for your message, ${this.form.name}! We will get back to you shortly.`);
+      // Reset form
+      this.form.name = '';
+      this.form.email = '';
+      this.form.message = '';
+    }
+  }
 };
 </script>
 
 <style scoped>
 /* Font imports */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
-
-/* CSS variables */
-:root {
-  --primary-color: #8c7851;
-  --secondary-color: #d4c6a9;
-  --text-color: #333;
-  --background-color: #f8f4ef;
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Roboto', sans-serif;
-}
-
-/* General styles */
-body {
-  margin: 0;
-  font-family: var(--font-body);
-  color: var(--text-color);
-  background-color: var(--background-color);
-}
-/* Contact page specific styles */
-/* Main content styles */
-.hero {
-  padding: 4rem 2rem;
+.contact-page {
   text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 50px;
 }
 
-.hero h1 {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.contact-info {
+  margin-bottom: 30px;
 }
 
-.slogan {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+.social-icons {
+  margin-bottom: 30px;
 }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.buttons button {
-  background-color: var(--secondary-color);
-  border: none;
-  color: var(--text-color);
-  padding: 0.8rem 1.5rem;
-  text-align: center;
-  text-decoration: none;
+.social-icons a {
+  margin: 0 15px;
   display: inline-block;
-  font-size: 1rem;
-  border-radius: 4px;
+}
+
+.icon-image {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
+button:hover {
+  background-color: #45a049;
+}
 </style>
