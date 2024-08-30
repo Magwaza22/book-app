@@ -2,6 +2,8 @@
   <div id="sell-a-book">
     <h1>Sell a Book</h1>
     <p>Here you can list a book to sell.</p>
+    <button @click="navigateTo('SignIn')">Login</button>
+    <button @click="navigateTo('SignUp')">Register</button>
   </div>
 </template>
 
@@ -10,6 +12,11 @@
 <script>
 export default {
   name: 'SellABook',
+  methods:{
+    navigateTo(page){
+      this.$router.push({ name: page});
+    },
+  },
 };
 </script>
 
