@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Enter Book Details</h1>
-    <form @submit.prevent="saveBook">
+    <form @submit.prevent="handleSubmit">
       <label for="bookId">Book ID (Generated)</label>
       <input type="text" id="bookId" v-model="bookDetails.bookId" readonly>
 
@@ -23,7 +23,7 @@
       <label for="price">Price</label>
       <input type="number" id="price" v-model="bookDetails.price" placeholder="Enter Price">
 
-      <button type="submit">Save Book Details</button>
+      <button type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -47,6 +47,13 @@ export default {
     saveBook() {
       // Logic to save book details can be added here
       console.log('Book details saved:', this.bookDetails);
+    },
+    navigateTo(pageName) {
+      this.$router.push({ name: pageName });
+    },
+    handleSubmit() {
+      this.saveBook(); // Call the saveBook method to save the details
+      this.navigateTo('SellerAppointment'); // Navigate to SellerAppointment page
     }
   }
 };
