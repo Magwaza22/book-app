@@ -1,8 +1,8 @@
 <script >
 export default {
   methods: {
-    handleLogin() {
-      this.$router.push({ name: 'AddBook' });
+    handleRegister() {
+      this.$router.push({ name: 'SellerDetails'});
     },
   },
 };
@@ -11,7 +11,7 @@ export default {
 <template>
   <div>
     <h1>Sign Up</h1>
-    <form @submit.prevent="signUp">
+    <form  @submit.prevent="handleRegister">
       <label for="email">Email:</label>
       <input type="email" v-model="email" id="email" required />
 

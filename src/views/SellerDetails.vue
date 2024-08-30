@@ -1,5 +1,8 @@
 <script>
+import BackButton from "@/components/BackButton.vue";
+
 export default {
+  components: {BackButton},
   data() {
     return {
       formData: {
@@ -24,6 +27,8 @@ export default {
 
 <template>
   <div class="Buyer-details">
+    <!-- Add BackButton component at the top -->
+    <BackButton />
     <h1>Seller Details</h1>
     <div class="form-box">
       <form @submit.prevent="handleSubmit">

@@ -1,5 +1,7 @@
 <template>
   <div id="sell-a-book">
+    <!-- Add BackButton component at the top -->
+    <BackButton />
     <h1>Sell a Book</h1>
     <p>Here you can list a book to sell.</p>
     <div class="buttons">
@@ -10,8 +12,11 @@
 </template>
 
 <script>
+import BackButton from "@/components/BackButton.vue";
+
 export default {
   name: 'SellABook',
+  components: {BackButton},
   methods: {
     navigateTo(page) {
       this.$router.push({ name: page });

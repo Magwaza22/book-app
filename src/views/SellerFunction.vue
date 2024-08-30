@@ -3,13 +3,15 @@
     <main>
       <section class="hero">
         <div class="book-icon"></div>
+        <!-- Add BackButton component at the top -->
+        <BackButton />
         <h1>WELCOME TO THE SELLER'S HUB</h1>
         <div class="slogan">Empowering sellers, enriching students!</div>
         <p>
           As a seller, you can easily manage your listings and connect with students looking for books.
         </p>
         <div class="buttons">
-          <button @click="navigateTo('AddListing')">Add Listing</button>
+          <button @click="navigateTo('AddBook')">Add Listing</button>
           <button @click="navigateTo('UpdateDetails')">Update Details</button>
           <button @click="navigateTo('ViewReviews')">View Reviews</button>
         </div>
@@ -19,7 +21,10 @@
 </template>
 
 <script>
+import BackButton from "@/components/BackButton.vue";
+
 export default {
+  components: {BackButton},
   methods: {
     navigateTo(page) {
       this.$router.push({ name: page });
