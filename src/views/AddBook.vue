@@ -74,12 +74,12 @@ body {
   padding: 20px;
   background-color: #B7B7A4; /* Form background color */
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0);
 }
 
 h1 {
   text-align: center;
-  color: #283618;
+  color:#283618;
   margin-bottom: 20px;
 }
 
@@ -93,9 +93,9 @@ label {
 input[type="text"],
 input[type="number"] {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #D4D4D4;
+  padding: 8px;
+  margin-bottom: 5px;
+  border: 3px solid #D4D4D4;
   border-radius: 4px;
   background-color: #F0EFEB;
 }
@@ -103,7 +103,7 @@ input[type="number"] {
 button {
   width: 100%;
   padding: 12px;
-  background-color: #283618; /* Button background */
+  background-color: #8c7851; /* Button background */
   color: #F0EFEB; /* Button text color */
   border: none;
   border-radius: 4px;
@@ -113,6 +113,6 @@ button {
 
 button:hover {
   background-color: #D4D4D4; /* Button hover color */
-  color: #283618;
+  color: #8c7851;
 }
 </style>

@@ -33,7 +33,7 @@ export default {
 /* Footer styles */
 footer {
   background-color: var(--primary-color);
-  color: var(--background-color);
+  color: #3334;
   padding: 2rem;
   display: flex;
   justify-content: space-between;
@@ -46,7 +46,7 @@ footer {
 }
 
 .social-media a {
-  color: var(--background-color);
+  color: #283618;
   font-size: 1.5rem;
 }
 </style>

@@ -1,7 +1,7 @@
 <script >
 export default {
   methods: {
-    signUp() {
+    handleLogin() {
       this.$router.push({ name: 'SellerDetails' });
     },
   },
@@ -11,7 +11,7 @@ export default {
 <template>
   <div>
     <h1>Sign Up</h1>
-    <form @submit.prevent="signUp">
+    <form @submit.prevent="handleLogin">
       <label for="email">Email:</label>
       <input type="email" v-model="email" id="email" required />
 
@@ -21,7 +21,7 @@ export default {
       <label for="confirmPassword">Confirm Password:</label>
       <input type="password" v-model="confirmPassword" id="confirmPassword" required />
 
-      <button type="submit" >Sign Up</button>
+      <button type="submit">Sign Up</button>
     </form>
   </div>
 </template>

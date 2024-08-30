@@ -1,12 +1,12 @@
 <template>
   <header>
-    <a href="#" class="back-arrow" @click.prevent="goBack">&larr; Back</a>
     <div class="logo">
       <img src="../assets/logo.jpg" alt="Book Junction Logo" />
       Book Junction
     </div>
     <nav>
       <ul>
+        <li><a href="#" class="back-arrow" @click.prevent="goBack">&larr; Back</a></li>
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/about">About</router-link></li>
         <li><router-link to="/contact">Contact</router-link></li>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style scoped>
-  /* Font imports */
+/* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
 /* CSS variables */
@@ -48,6 +48,7 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+a{}
 
 .logo {
   display: flex;
@@ -55,7 +56,7 @@ header {
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.5rem;
-  color: var(--background-color);
+  color: #283618;
 }
 
 .logo img {
@@ -73,19 +74,15 @@ nav ul {
 nav li {
   margin-left: 1.5rem;
 }
-
+a{
+  text-decoration: none;
+  color: #283618;
+  font-weight: 500;
+}
 nav a {
   text-decoration: none;
-  color: var(--background-color);
+  color: #283618;
   font-weight: 500;
-
-  .back-arrow {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    margin-right: 15px;
-    cursor: pointer;
-  }
 }
 
 </style>
