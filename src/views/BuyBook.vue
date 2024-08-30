@@ -3,8 +3,8 @@
     <h1>Buy a Book</h1>
     <p>Here you can list a book to sell.</p>
     <div class="buttons">
-      <button @click="navigateTo('SignIn')">Login</button>
-      <button @click="navigateTo('SignUp')">Register</button>
+      <button @click="navigateTo('BuyerLogin')">Login</button>
+      <button @click="navigateTo('BuyerRegister')">Register</button>
     </div>
   </div>
 </template>

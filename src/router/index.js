@@ -14,6 +14,9 @@ import BuyerLogin from "@/views/BuyerLogin.vue";
 import BuyerRegister from "@/views/BuyerRegister.vue";
 import BookListings from "@/views/BookListings.vue";
 import Orders from "@/views/Orders.vue";
+import BuyerAppointment from "@/views/BuyerAppointment.vue";
+import Ratings from "@/views/Ratings.vue";
+
 
 
 const routes = [
@@ -32,6 +35,9 @@ const routes = [
     { path: '/register', name: 'BuyerRegister', component: BuyerRegister},
     { path: '/bookl-isting', name: 'BookListings', component: BookListings},
     { path: '/order', name: 'Orders', component:Orders},
+    { path: '/buyer-appointment', name: 'BuyerAppointment', component:BuyerAppointment},
+    { path: '/ratings', name: 'Ratings', component:Ratings},
+
 
 ];
 
