@@ -1,4 +1,38 @@
+<template>
+  <div id="seller-details" class="container">
+    <main>
+      <section class="hero">
+
+        <h1>ENTER YOUR DETAILS</h1>
+        <p>Complete the form below to finalize your seller account setup.</p>
+        <div class="form-box">
+          <form @submit.prevent="handleSubmit">
+            <div class="form-group">
+              <label for="userid">User ID:</label>
+              <input type="text" id="userid" v-model="formData.userid" required />
+            </div>
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" v-model="formData.name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" v-model="formData.email" required />
+            </div>
+            <div class="form-group">
+              <label for="cellphone">Cellphone Number:</label>
+              <input type="tel" id="cellphone" v-model="formData.cellphone" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+</template>
+
 <script>
+
 export default {
   data() {
     return {
@@ -12,40 +46,14 @@ export default {
   },
   methods: {
     handleSubmit() {
+      // Implement form submission logic here
       this.$router.push({ name: 'SellerFunction' });
     },
-
   },
 };
 </script>
 
-<template>
-  <div id="seller-details" class="container">
-    <main>
-      <div class="form-box">
-
-      <form @submit.prevent="handleSubmit">
-        <label for="userid">User ID:</label>
-        <input type="text" id="userid" v-model="formData.userid" required>
-
-        <label for="name">Name:</label>
-        <input type="text" id="name" v-model="formData.name" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" v-model="formData.email" required>
-
-        <label for="cellphone">Cellphone Number:</label>
-        <input type="tel" id="cellphone" v-model="formData.cellphone" required>
-        <button type="submit">"Submit"</button>
-      </form>
-
-      </div>
-    </main>
-  </div>
-</template>
-
-<style>
-
+<style scoped>
 /* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
@@ -69,44 +77,64 @@ body {
 }
 
 /* Main content styles */
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: var(--background-color); /* Added background color for better contrast */
+  border-radius: 8px; /* Optional: adds rounded corners */
+}
 
-.hero h1 {
+h1 {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-input[type="text"],
-input[type="number"] {
+p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.form-box {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-color); /* Consistent with page background */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 5px;
-  border: 3px solid #D4D4D4;
+  padding: 0.8rem;
+  border: 1px solid var(--secondary-color);
   border-radius: 4px;
-  background-color: #F0EFEB;
+  font-size: 1rem;
+  background-color: var(--background-color); /* Consistent with form background */
 }
 
-@keyframes fadeIn {
-  0% { opacity: 0.5; }
-  100% { opacity: 1; }
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.buttons button {
+button {
   background-color: var(--secondary-color);
   border: none;
   color: var(--text-color);
   padding: 0.8rem 1.5rem;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
 }
 </style>
