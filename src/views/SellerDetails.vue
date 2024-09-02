@@ -99,7 +99,7 @@ p {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: var(--background-color); /* Consistent with page background */
+  background-color: var(--primary-color); /* Consistent with page background */
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

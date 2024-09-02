@@ -10,8 +10,8 @@
         </p>
         <div class="buttons">
           <button @click="navigateTo('AddBook')">Add Listing</button>
-          <button @click="navigateTo('UpdateDetails')">Update Details</button>
-          <button @click="navigateTo('ViewReviews')">View Reviews</button>
+          <button @click="navigateTo('UpdateSellerDetails')">Update Details</button>
+          <button @click="navigateTo('ViewDetails')">View Reviews</button>
         </div>
       </section>
     </main>

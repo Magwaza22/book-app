@@ -112,7 +112,7 @@ p {
   border: 1px solid var(--secondary-color);
   border-radius: 4px;
   font-size: 1rem;
-  background-color: var(--background-color); /* Consistent with the page background */
+  background-color: var(--primary-color);
 }
 
 button {

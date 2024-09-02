@@ -16,8 +16,8 @@ import BookListings from "@/views/BookListings.vue";
 import Orders from "@/views/Orders.vue";
 import BuyerAppointment from "@/views/BuyerAppointment.vue";
 import Ratings from "@/views/Ratings.vue";
-
-
+import ViewDetails from "@/views/ViewDetails.vue";
+import UpdateSellerDetails from "@/views/UpdateSellerDetails.vue";
 
 const routes = [
     { path: '/', name: 'Home', component: HomePage },
@@ -37,7 +37,8 @@ const routes = [
     { path: '/order', name: 'Orders', component:Orders},
     { path: '/buyer-appointment', name: 'BuyerAppointment', component:BuyerAppointment},
     { path: '/ratings', name: 'Ratings', component:Ratings},
-
+    { path: '/view-details', name: 'ViewDetails', component: ViewDetails},
+    { path: '/update-seller-details', name: 'UpdateSellerDetails', component: UpdateSellerDetails},
 
 ];
 

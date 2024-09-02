@@ -109,10 +109,10 @@ p {
 .form-group input {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--primary-color);
   border-radius: 4px;
   font-size: 1rem;
-  background-color: var(--background-color); /* Consistent with the page background */
+  background-color: var(--background-color);
 }
 
 button {
