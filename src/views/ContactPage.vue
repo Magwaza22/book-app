@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     submitForm() {
-      // Handle form submission, e.g., send data to a server
+
       alert(`Thank you for your message, ${this.form.name}! We will get back to you shortly.`);
       // Reset form
       this.form.name = '';
@@ -68,7 +68,6 @@ export default {
 </script>
 
 <style scoped>
-/* Font imports */
 .contact-page {
   text-align: center;
   font-family: Arial, sans-serif;
@@ -89,8 +88,8 @@ export default {
 }
 
 .icon-image {
-  width: 40px; /* Adjust size as needed */
-  height: 40px; /* Adjust size as needed */
+  width: 40px;
+  height: 40px;
 }
 
 .form-group {

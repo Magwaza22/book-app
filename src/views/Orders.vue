@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <!-- Confirm Button -->
+
       <div class="text-center mt-4">
         <button class="btn btn-primary" @click="confirmOrder">Confirm</button>
       </div>

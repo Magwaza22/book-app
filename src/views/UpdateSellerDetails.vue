@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-// Mock data for the sake of example; replace with your data source
 const books = ref([
   {
     bookId: '1',
@@ -23,7 +22,7 @@ const books = ref([
   // Add more books as needed
 ]);
 
-const editedBooks = ref(books.value.map(book => ({ ...book }))); // Create a copy for editing
+const editedBooks = ref(books.value.map(book => ({ ...book })));
 const router = useRouter();
 
 const updateBook = (bookId, newDetails) => {
@@ -38,9 +37,9 @@ const deleteBook = (bookId) => {
 };
 
 const saveChanges = () => {
-  // Save changes logic; typically, you would send this data to a server
+
   console.log('Changes saved', editedBooks.value);
-  // Example redirect after saving changes
+
   router.push({ name: 'BookListing' });
 };
 </script>

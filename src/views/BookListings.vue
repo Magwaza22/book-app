@@ -73,7 +73,7 @@ export default {
           price: 18.99,
           imageUrl: '../assets/markerting.jpg'
         }
-        // More books can be added here
+
       ],
       selectedBooks: []
     };

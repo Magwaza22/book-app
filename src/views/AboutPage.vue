@@ -61,8 +61,7 @@ export default {
 </script>
 
 <style scoped>
-/* About page specific styles */
-/* Font imports */
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
 /* CSS variables */

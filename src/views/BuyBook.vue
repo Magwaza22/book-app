@@ -20,13 +20,13 @@
 </template>
 
 <script>
-import bookImage from '@/assets/stack.jpg'; // Adjust the path as necessary
+import bookImage from '@/assets/stack.jpg';
 
 export default {
   name: 'BuyABook',
   data() {
     return {
-      bookImage, // Assign the imported image to a data property
+      bookImage,
     };
   },
   methods: {

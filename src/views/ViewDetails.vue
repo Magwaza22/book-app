@@ -24,7 +24,7 @@
 <script setup>
 import { ref } from 'vue';
 
-// Dummy data for reviews
+
 const reviews = ref([
   { id: 1, customerName: 'Alice', rating: 4, content: 'Great service, very helpful!' },
   { id: 2, customerName: 'Bob', rating: 5, content: 'Fantastic experience, will definitely return.' },

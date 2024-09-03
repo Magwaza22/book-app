@@ -28,10 +28,10 @@ export default {
 </script>
 
 <style scoped>
-/* Font imports */
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
-/* CSS variables */
+
 :root {
   --primary-color: #8c7851;
   --secondary-color: #d4c6a9;
@@ -42,7 +42,6 @@ export default {
   --font-body: 'Roboto', sans-serif;
 }
 
-/* General styles */
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -50,22 +49,21 @@ body {
   background-color: var(--light-gray);
 }
 
-/* Main content styles */
 .hero {
   padding: 4rem 2rem;
   text-align: center;
-  background-color: var(--background-color); /* Ensure background is visible if image has transparency */
+  background-color: var(--background-color);
 }
 
 .book-image {
   width: 100%;
-  height: 300px; /* Adjust height to fit the design */
-  background-image: url('../assets/stack.jpg'); /* Replace with your optimized image */
+  height: 300px;
+  background-image: url('../assets/stack.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin: 0 auto 1rem;
-  border-radius: 8px; /* Optional: adds rounded corners */
+  border-radius: 8px;
 }
 
 .hero h1 {

@@ -42,7 +42,7 @@ export default {
 /* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
-/* CSS variables */
+
 :root {
   --primary-color: #8c7851;
   --secondary-color: #d4c6a9;
@@ -53,7 +53,7 @@ export default {
   --font-body: 'Roboto', sans-serif;
 }
 
-/* General styles */
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -61,7 +61,7 @@ body {
   background-color: var(--light-gray);
 }
 
-/* Main content styles */
+
 .hero {
   padding: 4rem 2rem;
   text-align: center;
@@ -89,7 +89,7 @@ p {
 .form-group {
   margin-bottom: 1rem;
   width: 100%;
-  max-width: 400px; /* Ensures the form doesn't stretch too wide */
+  max-width: 400px;
 }
 
 .form-group label {

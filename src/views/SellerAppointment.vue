@@ -2,7 +2,6 @@
   <div class="container">
     <h1>BookJunction Appointments</h1>
 
-    <!-- Appointment Form for Delivery -->
     <div class="appointment-form">
       <h2>Appointment to Deliver Book</h2>
       <form @submit.prevent="bookAppointment" class="form">
@@ -28,7 +27,7 @@
       </form>
     </div>
 
-    <!-- Pop-up Modal -->
+
     <div v-if="showPopup" class="popup">
       <div class="popup-content">
         <span class="close-btn" @click="closePopup">&times;</span>
@@ -56,7 +55,7 @@ export default {
   },
   methods: {
     bookAppointment() {
-      // Logic for booking the appointment
+
       this.popupMessage = 'Delivery appointment booked successfully!';
       this.showPopup = true;
     },
@@ -80,10 +79,10 @@ export default {
   max-width: 400px;
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #a69e9e; /* Border color */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
-  background-color: #ffffff; /* Background color */
+  border: 1px solid #a69e9e;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
 
 .form {
@@ -147,11 +146,11 @@ p {
 .popup-content {
   background: #ffffff;
   padding: 20px;
-  border-radius: 8px; /* Rounded corners */
+  border-radius: 8px;
   text-align: center;
   position: relative;
-  border: 1px solid #a69e9e; /* Border color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
+  border: 1px solid #a69e9e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .close-btn {

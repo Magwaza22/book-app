@@ -45,14 +45,13 @@ export default {
   },
   methods: {
     saveBook() {
-      // Logic to save book details can be added here
       console.log('Book details saved:', this.bookDetails);
     },
     navigateTo(pageName) {
       this.$router.push({name: pageName});
     },
     handleSubmit() {
-      this.saveBook(); // Call the saveBook method to save the details
+      this.saveBook();
       this.navigateTo('SellerAppointment'); // Navigate to SellerAppointment page
     }
   }
@@ -62,8 +61,8 @@ export default {
 <style scoped>
 body {
   font-family: Arial, sans-serif;
-  background-color: #F0EFEB; /* Background color */
-  color: #283618; /* Primary text color */
+  background-color: #F0EFEB;
+  color: #283618;
   margin: 0;
   padding: 0;
 }
@@ -72,7 +71,7 @@ body {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #B7B7A4; /* Form background color */
+  background-color: #B7B7A4;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0);
 }
@@ -103,8 +102,8 @@ input[type="number"] {
 button {
   width: 100%;
   padding: 12px;
-  background-color: #8c7851; /* Button background */
-  color: #F0EFEB; /* Button text color */
+  background-color: #8c7851;
+  color: #F0EFEB;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -112,7 +111,7 @@ button {
 }
 
 button:hover {
-  background-color: #D4D4D4; /* Button hover color */
+  background-color: #D4D4D4;
   color: #8c7851;
 }
 </style>

@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      // Implement form submission logic here
+
       this.$router.push({ name: 'SellerFunction' });
     },
   },
@@ -54,10 +54,10 @@ export default {
 </script>
 
 <style scoped>
-/* Font imports */
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
-/* CSS variables */
+
 :root {
   --primary-color: #8c7851;
   --secondary-color: #d4c6a9;
@@ -68,7 +68,7 @@ export default {
   --font-body: 'Roboto', sans-serif;
 }
 
-/* General styles */
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -76,12 +76,12 @@ body {
   background-color: var(--light-gray);
 }
 
-/* Main content styles */
+
 .hero {
   padding: 4rem 2rem;
   text-align: center;
-  background-color: var(--background-color); /* Added background color for better contrast */
-  border-radius: 8px; /* Optional: adds rounded corners */
+  background-color: var(--background-color);
+  border-radius: 8px;
 }
 
 h1 {
@@ -99,7 +99,7 @@ p {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: var(--primary-color); /* Consistent with page background */
+  background-color: var(--primary-color);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -119,7 +119,7 @@ p {
   border: 1px solid var(--secondary-color);
   border-radius: 4px;
   font-size: 1rem;
-  background-color: var(--background-color); /* Consistent with form background */
+  background-color: var(--background-color);
 }
 
 button {

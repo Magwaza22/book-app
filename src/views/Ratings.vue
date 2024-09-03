@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <h2 class="mb-4 text-center">Rate Your Experience</h2>
     <form @submit.prevent="submitRating">
-      <!-- Seller Rating -->
+
       <div class="card mb-3">
         <div class="card-header">
           <h4>Rate the Seller</h4>
@@ -24,7 +24,6 @@
         </div>
       </div>
 
-      <!-- Buyer Rating -->
       <div class="card mb-3">
         <div class="card-header">
           <h4>Rate the Buyer</h4>
