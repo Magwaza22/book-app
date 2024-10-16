@@ -5,48 +5,60 @@
         <h1>SIGN UP FOR AN ACCOUNT</h1>
         <p>Fill in the form below to create your account and start managing your listings.</p>
         <form @submit.prevent="handleSignUp" class="signup-form">
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" v-model="email" id="email" required />
+            <div class="form-group">
+              <label>First Name</label>
+              <input v-model="user.firstName" class="form-control" type="text" placeholder="Enter first name" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input v-model="user.lastName" class="form-control" type="text" placeholder="Enter last name" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input v-model="user.email" class="form-control" type="email" placeholder="Enter email address" />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label> <!-- Changed the label to "Phone Number" for consistency -->
+              <input v-model="user.phoneNumber" class="form-control" type="number" placeholder="Enter phone number" />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input v-model="user.password" class="form-control" type="password" placeholder="Enter password" />
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+          <div class="mt-3">
+            <span>Already registered? <router-link to="/login">Login here</router-link></span>
           </div>
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" v-model="password" id="password" required />
-          </div>
-          <div class="form-group">
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" v-model="confirmPassword" id="confirmPassword" required />
-          </div>
-          <button type="submit">Sign Up</button>
-        </form>
       </section>
     </main>
   </div>
 </template>
 
 <script>
+import AuthService from '../AuthService';
 
 export default {
   data() {
     return {
-      email: '',
-      password: '',
-      confirmPassword: '',
+      user: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '', // Corrected phone number variable name
+        password: ''
+      }
     };
   },
   methods: {
     handleSignUp() {
-
-      if (this.password === this.confirmPassword) {
-        this.$router.push({ name: 'SellerDetails' });
-      } else {
-        alert('Passwords do not match.');
-      }
-    },
-  },
+      AuthService.register(this.user).then(response => {
+        console.log(response.data);
+      });
+    }
+  }
 };
 </script>
-
 <style scoped>
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');

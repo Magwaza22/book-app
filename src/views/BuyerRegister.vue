@@ -3,55 +3,68 @@
     <main>
       <section class="hero">
         <h1>SIGN UP FOR AN ACCOUNT</h1>
-        <p>Fill in the form below to create your account and start Buying!!.</p>
-        <form @submit.prevent="handleSignUp" class="signup-form">
+        <p>Fill in the form below to create your account and start Buying!!</p>
+        <form @submit.prevent="registerUser">
           <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" v-model="email" id="email" required />
+            <label>First Name</label>
+            <input v-model="user.firstName" class="form-control" type="text" placeholder="Enter first name" />
           </div>
           <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" v-model="password" id="password" required />
+            <label>Last Name</label>
+            <input v-model="user.lastName" class="form-control" type="text" placeholder="Enter last name" />
           </div>
           <div class="form-group">
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" v-model="confirmPassword" id="confirmPassword" required />
+            <label>Email</label>
+            <input v-model="user.email" class="form-control" type="email" placeholder="Enter email address" />
           </div>
-          <button type="submit">Sign Up</button>
+          <div class="form-group">
+            <label>Phone Number</label> <!-- Changed the label to "Phone Number" for consistency -->
+            <input v-model="user.phoneNumber" class="form-control" type="number" placeholder="Enter phone number" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input v-model="user.password" class="form-control" type="password" placeholder="Enter password" />
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
         </form>
+        <div class="mt-3">
+          <span>Already registered? <router-link to="/login">Login here</router-link></span>
+        </div>
       </section>
     </main>
   </div>
 </template>
 
 <script>
+import AuthService from '../AuthService';
 
 export default {
   data() {
     return {
-      email: '',
-      password: '',
-      confirmPassword: '',
+      user: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '', // Corrected phone number variable name
+        password: ''
+      }
     };
   },
   methods: {
-    handleSignUp() {
-
-      if (this.password === this.confirmPassword) {
-        this.$router.push({ name: 'BookListings' });
-      } else {
-        alert('Passwords do not match.');
-      }
-    },
-  },
+    registerUser() {
+      AuthService.register(this.user).then(response => {
+        console.log(response.data);
+      });
+    }
+  }
 };
 </script>
 
 <style scoped>
-
+/* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
-
+/* CSS variables */
 :root {
   --primary-color: #8c7851;
   --secondary-color: #d4c6a9;
@@ -74,8 +87,8 @@ body {
 .hero {
   padding: 4rem 2rem;
   text-align: center;
-  background-color: var(--background-color);
-  border-radius: 8px;
+  background-color: var(--background-color); /* Added background color for better contrast */
+  border-radius: 8px; /* Optional: adds rounded corners */
 }
 
 h1 {
@@ -98,7 +111,7 @@ p {
 .form-group {
   margin-bottom: 1rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 400px; /* Ensures the form doesn't stretch too wide */
 }
 
 .form-group label {
