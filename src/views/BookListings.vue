@@ -8,7 +8,7 @@
           <div v-for="book in books" :key="book.bookId" class="book-item">
             <img :src="book.imageUrl" :alt="book.title" class="book-image" />
             <h3>{{ book.title }}</h3>
-            <p><strong>Author:</strong> {{ book.author }}</p>
+<!--            <p><strong>Author:</strong> {{ book.author }}</p>-->
             <p><strong>Edition:</strong> {{ book.edition }}</p>
             <p><strong>Price:</strong> ${{ book.price }}</p>
             <label>
@@ -20,61 +20,17 @@
       </div>
       <button type="submit" class="submit-button">Go to Orders Page</button>
     </form>
+    <button @click="fetchBooks" class="update-button button"><i class="fa fa-pencil"></i> Edit Profile</button>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      books: [
-        {
-          bookId: '1',
-          category: 'Programming',
-          title: 'JavaScript: The Good Parts',
-          author: 'Douglas Rockford',
-          edition: '1st',
-          price: 25.99,
-          imageUrl: '../assets/CJava.jpg'
-        },
-        {
-          bookId: '2',
-          category: 'Programming',
-          title: 'Clean Code',
-          author: 'Robert C. Martin',
-          edition: '1st',
-          price: 32.99,
-          imageUrl: '../assets/python.jpg'
-        },
-        {
-          bookId: '3',
-          category: 'Programming',
-          title: 'You Don’t Know JS',
-          author: 'Kyle Simpson',
-          edition: '1st',
-          price: 22.99,
-          imageUrl: '../assets/java.jpg'
-        },
-        {
-          bookId: '4',
-          category: 'Programming',
-          title: 'The Pragmatic Programmer',
-          author: 'Andrew Hunt, David Thomas',
-          edition: '2nd',
-          price: 45.99,
-          imageUrl: '../assets/pragmatic_programmer.jpg'
-        },
-        {
-          bookId: '5',
-          category: 'Marketing',
-          title: 'Contagious: How to Build Word of Mouth in the Digital Age',
-          author: 'Jonah Berger',
-          edition: '1st',
-          price: 18.99,
-          imageUrl: '../assets/markerting.jpg'
-        }
-
-      ],
+      books: [],
       selectedBooks: []
     };
   },
@@ -96,8 +52,20 @@ export default {
         name: 'Orders', // Ensure this matches the route name in your router
         query: {books: this.selectedBooks.join(',')}
       });
+    },
+    fetchBooks(){
+      axios
+          .get(`http://localhost:8080/book/getall`,)
+          .then(response => {
+            this.books = response.data;
+            console.log(this.books);
+          })
+          .catch(error => {
+            console.error(error);
+          });
     }
   }
+
 };
 </script>
 
