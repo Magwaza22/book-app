@@ -2,12 +2,11 @@
   <div class="container">
     <h1>BookJunction Appointments</h1>
 
-
     <div class="appointment-form">
       <h2>Appointment to Collect Book</h2>
       <form @submit.prevent="bookAppointment">
-        <input type="hidden" v-model="form.orderID" value="54321">
-        <input type="hidden" v-model="form.buyerID" value="09876">
+        <input type="hidden" v-model="form.orderID">
+        <input type="hidden" v-model="form.buyerID">
         <div class="form-group">
           <label for="buyername">Buyer Name:</label>
           <input type="text" id="buyername" v-model="form.buyername">
@@ -21,8 +20,12 @@
           <input type="tel" id="phonenumber" v-model="form.phonenumber">
         </div>
         <div class="form-group">
-          <label>Location:</label>
-          <p>{{ form.location }}</p> <!-- Display static address -->
+          <label for="location">Location:</label>
+          <select id="location" v-model="form.location">
+            <option v-for="location in locations" :key="location.id" :value="location.address">
+              {{ location.address }}
+            </option>
+          </select>
         </div>
         <button type="submit" class="submit-btn">Book Appointment</button>
       </form>
@@ -38,25 +41,44 @@
   </div>
 </template>
 
+
+
 <script>
+import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
+
 export default {
   data() {
     return {
       form: {
-        orderID: '54321',
-        buyerID: '09876',
+        orderID: uuidv4(),
+        buyerID: uuidv4(),
         buyername: '',
         email: '',
         phonenumber: '',
-        location: 'Hanover St, District Six, Cape Town, 7925, Library' // Static address
+        location: '' // Initialized as empty
       },
+      locations: [], // Array to store fetched locations
       showPopup: false,
       popupMessage: ''
     };
   },
+  mounted() {
+    this.fetchLocations(); // Fetch locations when component mounts
+  },
   methods: {
+    fetchLocations() {
+      axios
+          .get('http://localhost:8080/location/getall') // Adjust the endpoint as necessary
+          .then(response => {
+            this.locations = response.data;
+          })
+          .catch(error => {
+            console.error(error);
+          });
+    },
     bookAppointment() {
-      // Logic for booking the appointment
+      // Logic to book the appointment
       this.popupMessage = 'Collection appointment booked successfully!';
       this.showPopup = true;
       this.$router.push({ name: 'Ratings' });
@@ -67,6 +89,8 @@ export default {
   }
 };
 </script>
+
+
 
 <style scoped>
 .container {
