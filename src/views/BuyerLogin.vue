@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import AuthService from '../AuthService';
+import AuthService from '@/service/AuthService';
 
 export default {
   data() {
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     loginUser() {
-      AuthService.handleLogin(this.user).then(response => {
+      AuthService.SignUp(this.user).then(response => {
         console.log(response.data);
       });
     }

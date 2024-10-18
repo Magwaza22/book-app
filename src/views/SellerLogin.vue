@@ -1,3 +1,4 @@
+
 <template>
   <div id="sign-in" class="container">
     <main>
@@ -24,7 +25,8 @@
 </template>
 
 <script>
-import AuthService from '../AuthService';
+
+import AuthService from '@/service/AuthService';
 
 export default {
   data() {
@@ -37,12 +39,20 @@ export default {
   },
   methods: {
     loginUser() {
-      AuthService.handleLogin(this.user).then(response => {
+      AuthService.SignUp(this.user).then(response => {
+        // Assuming the login is successful, and you have the response
         console.log(response.data);
+
+        // Navigate to the desired page after successful login
+        this.$router.push('/SellerFunction');  // Replace '/dashboard' with the route you want to navigate to
+      }).catch(error => {
+        console.error("Login failed", error);
+        // Handle the error (e.g., show an error message)
       });
     }
-  }
-};
+   }
+  };
+
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
