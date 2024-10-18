@@ -1,20 +1,15 @@
 <template>
   <div id="app">
-    <Header />
-    <router-view />
-    <Footer />
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Registration and Login System</a>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-
 export default {
-  components: {
-    Header,
-    Footer,
-  },
+  name: 'App'
 };
 </script>
 

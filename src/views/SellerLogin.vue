@@ -4,44 +4,48 @@
       <section class="hero">
         <h1>SIGN IN TO YOUR ACCOUNT</h1>
         <p>Enter your credentials to access your account and manage your listings.</p>
-        <form @submit.prevent="handleLogin" class="login-form">
+        <form @submit.prevent="loginUser">
           <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" v-model="email" required />
+            <label>Email</label>
+            <input v-model="user.email" class="form-control" type="email" placeholder="Email" />
           </div>
           <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" v-model="password" required />
+            <label>Password</label>
+            <input v-model="user.password" class="form-control" type="password" placeholder="Password" />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" class="btn btn-primary">Login</button>
         </form>
+        <div class="mt-3">
+          <span>Not registered? <router-link to="/register">Register/SignUp Here</router-link></span>
+        </div>
       </section>
     </main>
   </div>
 </template>
 
 <script>
+import AuthService from '../AuthService';
 
 export default {
   data() {
     return {
-      email: '',
-      password: '',
+      user: {
+        email: '',
+        password: ''
+      }
     };
   },
   methods: {
-    handleLogin() {
-      // Implement login logic here
-      this.$router.push({ name: 'SellerFunction' });
-    },
-  },
+    loginUser() {
+      AuthService.handleLogin(this.user).then(response => {
+        console.log(response.data);
+      });
+    }
+  }
 };
 </script>
-
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
-
 
 :root {
   --primary-color: #8c7851;
@@ -53,14 +57,12 @@ export default {
   --font-body: 'Roboto', sans-serif;
 }
 
-
 body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--text-color);
   background-color: var(--light-gray);
 }
-
 
 .hero {
   padding: 4rem 2rem;
