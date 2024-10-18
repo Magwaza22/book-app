@@ -3,45 +3,53 @@
     <main>
       <section class="hero">
         <h1>SIGN IN TO YOUR ACCOUNT</h1>
-        <p>Login and Browse through available.</p>
-        <form @submit.prevent="handleLogin" class="login-form">
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" v-model="email" required />
+        <div class="card-header">Login Form</div>
+        <div class="card-body">
+          <form @submit.prevent="loginUser">
+            <div class="form-group">
+              <label>Email</label>
+              <input v-model="user.email" class="form-control" type="email" placeholder="Email" />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input v-model="user.password" class="form-control" type="password" placeholder="Password" />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+          <div class="mt-3">
+            <span>Not registered? <router-link to="/register">Register/SignUp Here</router-link></span>
           </div>
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" v-model="password" required />
-          </div>
-          <button type="submit">Login</button>
-        </form>
+        </div>
       </section>
     </main>
   </div>
 </template>
 
 <script>
+import AuthService from '../AuthService';
 
 export default {
   data() {
     return {
-      email: '',
-      password: '',
+      user: {
+        email: '',
+        password: ''
+      }
     };
   },
   methods: {
-    handleLogin() {
-      // Implement login logic here
-      this.$router.push({ name: 'BookListings' });
-    },
-  },
+    loginUser() {
+      AuthService.handleLogin(this.user).then(response => {
+        console.log(response.data);
+      });
+    }
+  }
 };
 </script>
 
 <style scoped>
 /* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
-
 
 :root {
   --primary-color: #8c7851;
@@ -53,14 +61,12 @@ export default {
   --font-body: 'Roboto', sans-serif;
 }
 
-
 body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--text-color);
   background-color: var(--light-gray);
 }
-
 
 .hero {
   padding: 4rem 2rem;
