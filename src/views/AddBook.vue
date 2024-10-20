@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Enter Book Details</h1>
     <div class="book-form">
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="saveBook">
 
       <div class="form-group">
       <label for="bookPhoto">Book Photo</label>
@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -68,38 +70,37 @@ export default {
     };
   },
   methods: {
-    async saveBook() {
-      try {
-        // Send a POST request to the backend API to save book details
-        const response = await fetch('http://localhost:8080/book/save', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(this.bookDetails)
-        });
+     saveBook() {
+      //preparing data to send
+      const bookData = {
+        bookPhoto: this.bookDetails.bookPhoto,
+        ISBN: this.bookDetails.ISBN,
+        title: this.bookDetails.title,
+        edition: this.bookDetails.edition,
+        authorFirstName: this.bookDetails.authorFirstName,
+        authorLastName: this.bookDetails.authorLastName,
+        price: this.bookDetails.price
+      };
 
-        if (!response.ok) {
-          throw new Error('Error saving book details');
-        }
-
-        const data = await response.json();
-        console.log('Book details saved:', data);
-
-        // Navigate to a different page upon success
-        this.navigateTo('SellerAppointment');
-      } catch (error) {
-        console.error('Failed to save book details:', error);
-      }
+      axios.post('http://localhost:8080/book/save',
+          bookData)
+          .then(response => {
+            this.popupMessage = 'book saved successfully!';
+            this.showPopup = true;
+            this.$router.push({ name: 'BookListings'});
+          })
+          .catch(error => {
+            console.error(error);
+            this.popupMessage = 'Error while saving book saved successfully!';
+            this.showPopup = true;
+          });
     },
-    navigateTo(pageName) {
-      this.$router.push({ name: pageName });
-    },
-    handleSubmit() {
-      this.saveBook();
+    closePopup() {
+      this.showPopup = false;
     }
   }
 };
+
 </script>
 
 <style scoped>
