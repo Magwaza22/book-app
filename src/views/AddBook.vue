@@ -1,30 +1,54 @@
 <template>
   <div class="container">
     <h1>Enter Book Details</h1>
+    <div class="book-form">
     <form @submit.prevent="handleSubmit">
-      <label for="bookId">Book ID (Generated)</label>
-      <input type="text" id="bookId" v-model="bookDetails.bookId" readonly>
 
+      <div class="form-group">
+      <label for="bookPhoto">Book Photo</label>
+      <input type="file" id="bookPhoto" @change="handleFileUpload" />
+      </div>
+
+      <div class="form-group">
+      <!-- ISBN -->
       <label for="isbn">ISBN</label>
-      <input type="text" id="isbn" v-model="bookDetails.isbn" placeholder="Enter ISBN">
+      <input type="text" id="isbn" v-model="bookDetails.ISBN" placeholder="Enter ISBN" />
+      </div>
 
-      <label for="author">Author</label>
-      <input type="text" id="author" v-model="bookDetails.author" placeholder="Enter Author Name">
-
+      <div class="form-group">
+      <!-- Title -->
       <label for="title">Title</label>
-      <input type="text" id="title" v-model="bookDetails.title" placeholder="Enter Book Title">
+      <input type="text" id="title" v-model="bookDetails.title" placeholder="Enter Book Title" />
+      </div>
 
+      <div class="form-group">
+      <!-- Edition -->
       <label for="edition">Edition</label>
-      <input type="text" id="edition" v-model="bookDetails.edition" placeholder="Enter Edition">
+      <input type="text" id="edition" v-model="bookDetails.edition" placeholder="Enter Edition" />
+      </div>
 
-      <label for="publisher">Publisher</label>
-      <input type="text" id="publisher" v-model="bookDetails.publisher" placeholder="Enter Publisher">
+      <div class="form-group">
+      <!-- Author First Name -->
+      <label for="authorFirstName">Author First Name</label>
+      <input type="text" id="authorFirstName" v-model="bookDetails.authorFirstName" placeholder="Enter Author's First Name" />
+      </div>
 
+      <div class="form-group">
+      <!-- Author Last Name -->
+      <label for="authorLastName">Author Last Name</label>
+      <input type="text" id="authorLastName" v-model="bookDetails.authorLastName" placeholder="Enter Author's Last Name" />
+      </div>
+
+      <div class="form-group">
+      <!-- Price -->
       <label for="price">Price</label>
-      <input type="number" id="price" v-model="bookDetails.price" placeholder="Enter Price">
+      <input type="number" id="price" v-model="bookDetails.price" placeholder="Enter Price" />
+      </div>
 
       <button type="submit">Submit</button>
+
     </form>
+    </div>
   </div>
 </template>
 
@@ -33,26 +57,46 @@ export default {
   data() {
     return {
       bookDetails: {
-        bookId: '123456',
-        isbn: '',
-        author: '',
+        bookPhoto: null, // Will hold the uploaded file as byte[]
+        ISBN: '',
         title: '',
         edition: '',
-        publisher: '',
+        authorFirstName: '',
+        authorLastName: '',
         price: null
       }
     };
   },
   methods: {
-    saveBook() {
-      console.log('Book details saved:', this.bookDetails);
+    async saveBook() {
+      try {
+        // Send a POST request to the backend API to save book details
+        const response = await fetch('http://localhost:8080/book/save', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(this.bookDetails)
+        });
+
+        if (!response.ok) {
+          throw new Error('Error saving book details');
+        }
+
+        const data = await response.json();
+        console.log('Book details saved:', data);
+
+        // Navigate to a different page upon success
+        this.navigateTo('SellerAppointment');
+      } catch (error) {
+        console.error('Failed to save book details:', error);
+      }
     },
     navigateTo(pageName) {
-      this.$router.push({name: pageName});
+      this.$router.push({ name: pageName });
     },
     handleSubmit() {
       this.saveBook();
-      this.navigateTo('SellerAppointment'); // Navigate to SellerAppointment page
     }
   }
 };

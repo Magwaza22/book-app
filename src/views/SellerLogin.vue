@@ -26,6 +26,7 @@
 
 <script>
 
+import axios from "axios";
 import AuthService from '@/service/AuthService';
 
 export default {
@@ -38,22 +39,26 @@ export default {
     };
   },
   methods: {
-    loginUser() {
-      AuthService.SignUp(this.user).then(response => {
-        // Assuming the login is successful, and you have the response
-        console.log(response.data);
+    async loginUser() {
+      try {
+        const response = await axios.post('http://localhost:8080/auth/login', {
+          email: this.email,
+          password: this.password,
+        });
 
-        // Navigate to the desired page after successful login
-        this.$router.push('/SellerFunction');  // Replace '/dashboard' with the route you want to navigate to
-      }).catch(error => {
-        console.error("Login failed", error);
-        // Handle the error (e.g., show an error message)
-      });
+        const token = response.data.token;
+        localStorage.setItem('authToken', token);
+
+      } catch (error) {
+        this.errorMessage = 'Error registering account. Please try again.';
+      }
+      this.$router.push({name: 'SellerFunction'});
     }
-   }
+  }
   };
 
 </script>
+
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
@@ -69,7 +74,7 @@ export default {
 
 body {
   margin: 0;
-  font-family: var(--font-body);
+  font-family: var(--font-body)serif;
   color: var(--text-color);
   background-color: var(--light-gray);
 }
@@ -82,7 +87,7 @@ body {
 }
 
 h1 {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading),serif;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
